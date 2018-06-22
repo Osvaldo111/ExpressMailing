@@ -1,0 +1,75 @@
+ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: #333;
+}
+
+li {
+    float: left;
+}
+
+li a {
+    display: block;
+    color: white;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+}
+
+li a:hover {
+    background-color: #111;
+}
+
+.bgimg {
+    background-position: center;
+    background-size: cover;
+    background-image: url("../mailing.jpg");
+    min-height: 75%;
+    margin-bottom:40px;
+}
+
+body, html {
+    height: 100%;
+    font-family: "Inconsolata", sans-serif;
+}
+
+/*Center a text in the image of the home page*/
+.centered {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size:80px;
+    color: white;
+}
+
+.content {
+    max-width: 500px;
+    margin: auto;
+    font-size: 18px;
+}
+
+.title-container{
+
+    font-family:'Times New Roman';
+    margin:auto;
+    text-align:center;
+    color: white;
+    max-width: 150px;
+    background-color: black;
+    margin-bottom:40px;
+    font-size:25px;
+}
+
+.center_div {
+    margin: auto;
+    width: 40%;
+    padding: 10px;
+}
+
+.form_style{
+    max-width: 500px;
+    margin-bottom:40px;
+}

@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <% include ../partials/header.ejs %>
+</head>
+
+<body>
+
+  <% include ../partials/nav.ejs %>
+
+ <header class="bgimg" id="home">
+        <div class="centered">Express Mailing</div>
+  </header>
+
+
+  <div>
+  <form action="/getRate">
+  
+    <label for="country">Types of maily</label>
+    <select id="country" name="country">
+      <option value="australia">Letters (Stamped)</option>
+      <option value="canada">Letters (Metered)</option>
+      <option value="usa">Large Envelopes (Flats)</option>
+      <option value="usa">First-Class Package Service—Retail</option>
+    </select>
+    
+    <label for="fname">Weight</label>
+    <input type="text" id="fname" name="firstname" placeholder="Weight Kg..">
+  
+    <input type="submit" value="Submit">
+  </form>
+</div>
+
+</body>
+</html>
