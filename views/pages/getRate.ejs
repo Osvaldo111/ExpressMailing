@@ -11,10 +11,19 @@
  <header class="bgimg" id="home">
         <div class="centered">Express Mailing</div>
   </header>
-
-    <p>The result of performing "<%= total_to_pay %>" </p>
-
-
+<div class="container">
+ <div class="card text-center">
+  <div class="card-header">
+    Express Mailing
+  </div>
+  <div class="card-body">
+    <h5 class="card-title">You have selected:</h5>
+    <p class="card-text">Mail type: "<%= mail_Type %>"</p>
+    <p class="card-text">Weight: <%= weight %> Oz</p>
+    <p class="card-text">Price: $<%= total_to_pay %></p>
+  </div>
+ </div>
+</div>
 
 </body>
 </html>

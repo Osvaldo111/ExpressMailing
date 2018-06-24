@@ -12,108 +12,43 @@
         <div class="centered">Express Mailing</div>
   </header>
 
-
-  <div>
-  <form action="/getRate" method="post">
-  
-    <label for="country">Types of maily</label>
-    <select id="country" name="types_of_mails">
-      <option value="LettS">Letters (Stamped)</option>
-      <option value="LettM">Letters (Metered)</option>
-      <option value="LargE">Large Envelopes (Flats)</option>
-      <option value="FirstCP">First-Class Package Service—Retail</option>
-    </select>
-    
-    <label for="fname">Weight</label>
-    <input type="text" id="fname" name="weight" placeholder="Weight Kg..">
-  
-    <input type="submit" value="Submit">
-  </form>
+<div class="container">
+  <div class="card">
+    <div class="card-body">
+        <h3 class="card-title">Please select the type of mail & the weight</h3>
+        <p>Enter the weight as numbers according to the selected mail</p>
+        <p id="demo"></p>         
+    </div>
 </div>
-
-
-<p>A function is triggered when the user is pressing a key in the input field.</p>
-
-<input type="text" onkeypress="myFunction()" onkeyup="myFunction()" id="fname">
-<p id="demo"></p>
-
+</div>
 
 <div class="container">
   <!-- Content here -->
-    <form class="needs-validation" novalidate>
+<form class="needs-validation" form action="/getRate" method="post">
   <div class="form-row">
     <div class="col-md-4 mb-3">
-      <label for="validationTooltip01">First name</label>
-      <input type="text" class="form-control" id="validationTooltip01" placeholder="First name" value="Mark" required>
-      <div class="valid-tooltip">
-        Looks good!
-      </div>
+    <label for="exampleFormControlSelect1">Types of Mails</label>
+    <select class="form-control" id="mail_type" name="types_of_mails" onchange="showParameters()">
+      <option value="" selected disabled hidden>Choose here</option>
+       <option value="LettS">Letters (Stamped)</option>
+        <option value="LettM">Letters (Metered)</option>
+        <option value="LargE">Large Envelopes (Flats)</option>
+        <option value="FirstCP">First-Class Package Service—Retail</option>
+    </select>
     </div>
     <div class="col-md-4 mb-3">
-      <label for="validationTooltip02">Last name</label>
-      <input type="text" class="form-control" id="validationTooltip02" placeholder="Last name" value="Otto" required>
-      <div class="valid-tooltip">
-        Looks good!
-      </div>
-    </div>
-    <div class="col-md-4 mb-3">
-      <label for="validationTooltipUsername">Username</label>
-      <div class="input-group">
-        <div class="input-group-prepend">
-          <span class="input-group-text" id="validationTooltipUsernamePrepend">@</span>
-        </div>
-        <input type="text" class="form-control" id="validationTooltipUsername" placeholder="Username" aria-describedby="validationTooltipUsernamePrepend" required>
-        <div class="invalid-tooltip">
-          Please choose a unique and valid username.
-        </div>
-      </div>
-    </div>
+      <label for="validationTooltip02">Weight</label>
+      <input type="text" class="form-control" id="weight"name="weight" onkeyup="showParameters()" placeholder="Exp: 12" required>
+    </div>  
   </div>
-  <div class="form-row">
-    <div class="col-md-6 mb-3">
-      <label for="validationTooltip03">City</label>
-      <input type="text" class="form-control" id="validationTooltip03" placeholder="City" required>
-      <div class="invalid-tooltip">
-        Please provide a valid city.
-      </div>
-    </div>
-    <div class="col-md-3 mb-3">
-      <label for="validationTooltip04">State</label>
-      <input type="text" class="form-control" id="validationTooltip04" placeholder="State" required>
-      <div class="invalid-tooltip">
-        Please provide a valid state.
-      </div>
-    </div>
-    <div class="col-md-3 mb-3">
-      <label for="validationTooltip05">Zip</label>
-      <input type="text" class="form-control" id="validationTooltip05" placeholder="Zip" required>
-      <div class="invalid-tooltip">
-        Please provide a valid zip.
-      </div>
-    </div>
-  </div>
-  <button class="btn btn-primary" type="submit">Submit form</button>
+  <button class="btn btn-primary" type="submit" id="myBtn" disabled>Submit</button>
 </form>
 </div>
-<!--
 
-function myFunction() {
-    var x = document.getElementById("fname").value;
-    
-    if(x == 1)
-    {
-      document.getElementById("demo").innerHTML = "You selected: " + x;
-    
-    }else
-    {
-    
-      document.getElementById("demo").innerHTML = "You selected: " + "ddddd";
-    
-    }
-
-}-->
+<script>
 
 
+</script>
 
 
 </body>

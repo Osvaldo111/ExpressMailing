@@ -3,8 +3,8 @@ const path = require('path')
 const PORT = process.env.PORT || 5000
 
 var bodyParser = require('body-parser');
-var multer = require('multer'); // v1.0.5
-var upload = multer(); // for parsing multipart/form-data
+/*var multer = require('multer'); // v1.0.5
+var upload = multer(); // for parsing multipart/form-data*/
 
 express()
   .use(bodyParser.json()) // for parsing application/json
@@ -17,12 +17,6 @@ express()
 	res.render('pages/index');
 
   })
-
-   .get('/getRate', function(req, res){
-
-	res.render('pages/getRate');
-
-	})
  // .get('/getRate', (req, res) => res.render('pages/getRate'))
   .post('/getRate', function(req,res){
 	//res.render('pages/getRate');
@@ -36,17 +30,40 @@ express()
   function calculateRate(req,res){
 
   	var types_of_mails = req.body.types_of_mails;
-  	var weight = parseInt(req.body.weight);
-  	var total_to_pay = calculateFirstClass(weight);
+  	var weight = parseFloat(req.body.weight);
+  	var mail = null;
+  	var total_to_pay = null;
+
+  	// Set the correct price according to the service selected
+  	if(types_of_mails == "LettS"){
+  		total_to_pay = calculateLettersStamped(weight);
+  		//console.log("letterS0200");
+  		mail = "Letters (Stamped)";
+  	}else if (types_of_mails == "LettM") {
+  		total_to_pay = calculateLettersMetered(weight);
+  		//console.log("letterM0000");
+  		mail = "Letters (Metered)";
+  	}else if (types_of_mails == "LargE") {
+  		total_to_pay = calculateLargeEnvelopes(weight);
+  		//console.log("letterE000000");
+  		mail = "Large Envelopes (Flats)";
+  	}else if (types_of_mails == "FirstCP") {
+  		total_to_pay = calculateFirstClass(weight);
+  		//console.log("letterCP00000");
+  		mail = "First-Class Package Service—Retail";
+  	}
 
  	console.log('passesd');
   	console.log(types_of_mails);
   	console.log(weight);
 
-  	res.render('pages/getRate', {total_to_pay : total_to_pay});
+  	var params = {mail_Type : mail, total_to_pay: total_to_pay, weight: weight};
+  	res.render('pages/getRate', params);
 
   }
 
+  /* This function is designed to calculate the price for
+      the letter Stamped*/
   function calculateLettersStamped(weight){
 
   		switch(weight){
@@ -66,30 +83,32 @@ express()
   		return 0;
   }
 
+ /*This functions is designed to calculate the price 
+   for the letters metered*/
+  function calculateLettersMetered(weight){
 
-function calculateLettersMetered(weight){
+			switch(weight){
+				case 1:
+					return .47;
+					break;
+				case 2:
+					return .68;
+					break;
+				case 3:
+					return .89;
+					break;
+				case 3.5: 
+					return 1.10;
+					break;
+			}
 
-		switch(weight){
-			case 1:
-				return .47;
-				break;
-			case 2:
-				return .68;
-				break;
-			case 3:
-				return .89;
-				break;
-			case 3.5: 
-				return 1.10;
-				break;
-		}
+			return 0;
+	}
 
-		return 0;
-}
 
+ /*This function is designed to calculate the price for
+    the Large Envelopes(Flats)*/
   function calculateLargeEnvelopes(weight){
-
-  	var OneOz = 1;
 
   	if(weight == 1)
   		return 1;
@@ -100,7 +119,8 @@ function calculateLettersMetered(weight){
   		return 0;
   }
 
-
+/*This function is designed to calculate the price 
+  for First-Class package service-retail*/
 function calculateFirstClass(weight){
 
 	var OneOz = 3.5;
