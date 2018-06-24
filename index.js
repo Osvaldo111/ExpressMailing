@@ -17,7 +17,14 @@ express()
 	res.render('pages/index');
 
   })
- // .get('/getRate', (req, res) => res.render('pages/getRate'))
+
+  // Not allows on heroku
+  /*.get('/getRate', function(req, res){
+
+	res.render('pages/getRate');
+
+	})*/
+
   .post('/getRate', function(req,res){
 	//res.render('pages/getRate');
   	calculateRate(req,res);
